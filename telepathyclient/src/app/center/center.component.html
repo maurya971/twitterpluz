@@ -1,0 +1,28 @@
+<div class="box box-primary">
+  <div class="row">
+    <form [formGroup]="tweetForm" (ngSubmit)="doTweet(tweetForm.value)">
+       <div class="col-md-10">
+        <textarea class="form-control" name="tweetMsg" style="resize:none" placeholder="What you think!" formControlName="tweetMsg"></textarea>
+      </div>
+      <div class="col-md-2">
+        <button type="submit" [disabled]="!tweetForm.valid" name="tweet" class="btn btn-primary btn-block btn-flat">Tweet</button>
+      </div>
+    </form>
+  </div>
+  
+  <div class="box-body box-profile"  *ngFor='let twit of twits'>
+    <div class="post">
+      <div class="user-block">
+        <img class="img-circle img-bordered-sm" src={{twit.user.profile_image_url}} alt="user image">
+            <span class="username">
+              <a href="#"></a>
+            </span>
+        <span><b>{{twit.user.name}}</b> </span><span class="small">@{{twit.user.screen_name}} . {{twit.created_at | date}}</span>
+      </div>
+      <!-- /.user-block -->
+      <p>
+        {{twit.text}}
+      </p>
+    </div>
+  </div>
+</div>
